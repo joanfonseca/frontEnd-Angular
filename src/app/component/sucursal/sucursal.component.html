@@ -1,0 +1,93 @@
+<div class="container">
+    <form [formGroup]="empresa" (ngSubmit)="save()">
+        <h6 style="text-align: center;">Agregar Empresa</h6>
+        <div class="form-row mt-2">
+            <div class="col-2"><label class="form-control" style="background-color: #ffff; ">Nombre empresa</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control" formControlName="nombreCtrl" placeholder="Nombre Empresa">
+            </div>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="form-control btn-primary">Agregar<i class="fa fa-user-plus"></i></button>
+            <button type="button" class=" btn-anular form-control btn-primary"
+                (click)="actualizar()">Actualizar</button>
+        </div>
+    </form>
+    <br>
+    <form [formGroup]="sucursal" (ngSubmit)="saveS()">
+        <h6 style="text-align: center;">Agregar Sucursal</h6>
+        <div class="form-row mt-2">
+            <div class="col-2"><label class="form-control" style="background-color: #ffff; ">Nombre sucursal</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control" formControlName="nombreCtrl" placeholder="Nombre sucursal">
+            </div>
+            <div class="col-2"><label class="form-control" style="background-color: #ffff; ">Id empresa asociada</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control" formControlName="idEmpresaCtrl" placeholder="Id empresa">
+            </div>
+            <div class="col-2">
+                <label class="form-control" style="background-color: #ffff; ">empresa asociada</label>
+                <select id="ciudad" class="form-control" formControlName="idEmpresaCtrl" >
+                    <option *ngFor="let p of list; let index = index" value="p">
+                        {{ p }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="form-control btn-primary">Agregar<i class="fa fa-user-plus"></i></button>
+            <button type="button" class=" btn-anular form-control btn-primary"
+                (click)="actualizar2()">Actualizar</button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <th style="text-align: center;">id</th>
+            <th style="text-align: center;">Nombre</th>
+        </thead>
+        <br>
+        <tbody>
+            <tr *ngFor="let item of list; index as i">
+                <td style="text-align: center;">{{item._id}}</td>
+                <td style="text-align: center;">{{item.nombre}}</td>
+                <td>
+                    <button class="form-control" class="btn btn-danger" type="button" (click)="delete(item)">Eliminar</button>
+                </td>
+                <td>
+                    <button class="form-control" class="btn btn-dark" type="button" (click)="editar(item)">Editar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <table>
+        <thead>
+            <th style="text-align: center;">id</th>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Id Empresa</th>
+        </thead>
+        <br>
+        <tbody>
+            <tr *ngFor="let item of list2; index as i">
+                <td style="text-align: center;">{{item._id}}</td>
+                <td style="text-align: center;">{{item.nombre}}</td>
+                <td style="text-align: center;">{{item.id_empresa}}</td>
+                <td>
+                    <button class="form-control" class="btn btn-danger" type="button" (click)="delete2(item)">Eliminar</button>
+                </td>
+                <td>
+                    <button class="form-control" class="btn btn-dark" type="button" (click)="editar2(item)">Editar</button>
+                </td>
+                <td>
+                    <button class="form-control" class="btn btn-dark" type="button" (click)="desa(item)">Desasociar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
